@@ -33,8 +33,7 @@ class Student(models.Model):
     student_image = models.ImageField( 
         upload_to='students/', blank=True) 
 
-    parent = models.OneToOneField( 
-        Parent, on_delete=models.CASCADE) 
+    parent = models.OneToOneField(Parent, on_delete=models.CASCADE)
     
     def __str__(self): 
       return f"{self.first_name} {self.last_name} ({self.student_id})" 
