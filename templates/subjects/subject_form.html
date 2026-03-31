@@ -1,0 +1,102 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>{% if subject %}✏️ Modifier une Matière{% else %}➕ Ajouter une Matière{% endif %}</h2>
+            <hr>
+
+            <form method="POST" class="mt-4">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                    <label for="name"><strong>Nom de la Matière <span class="text-danger">*</span></strong></label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="name" 
+                        name="name" 
+                        value="{% if subject %}{{ subject.name }}{% endif %}"
+                        placeholder="ex: Mathématiques"
+                        required
+                    >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="code"><strong>Code <span class="text-danger">*</span></strong></label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="code" 
+                        name="code" 
+                        value="{% if subject %}{{ subject.code }}{% endif %}"
+                        placeholder="ex: MATH101"
+                        required
+                    >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="department"><strong>Département <span class="text-danger">*</span></strong></label>
+                    <select class="form-control" id="department" name="department" required>
+                        <option value="">-- Sélectionnez un département --</option>
+                        {% for dept in departments %}
+                            <option value="{{ dept.id }}" 
+                                {% if subject and subject.department.id == dept.id %}selected{% endif %}>
+                                {{ dept.name }}
+                            </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="credit_hours"><strong>Crédits/Heures</strong></label>
+                    <input 
+                        type="number" 
+                        class="form-control" 
+                        id="credit_hours" 
+                        name="credit_hours" 
+                        value="{% if subject %}{{ subject.credit_hours }}{% else %}3{% endif %}"
+                        min="1"
+                        max="12"
+                    >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="description"><strong>Description</strong></label>
+                    <textarea 
+                        class="form-control" 
+                        id="description" 
+                        name="description" 
+                        rows="4"
+                        placeholder="Description détaillée de la matière..."
+                    >{% if subject %}{{ subject.description }}{% endif %}</textarea>
+                </div>
+
+                <div class="form-check mb-3">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input" 
+                        id="is_optional" 
+                        name="is_optional"
+                        {% if subject and subject.is_optional %}checked{% endif %}
+                    >
+                    <label class="form-check-label" for="is_optional">
+                        Cette matière est optionnelle
+                    </label>
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> 
+                        {% if subject %}Modifier{% else %}Créer{% endif %}
+                    </button>
+                    <a href="{% url 'subject-list' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

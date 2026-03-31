@@ -122,11 +122,10 @@
                         </ul>
                      </li>
                      <li class="submenu">
-                        <a href="#"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
+                        <a href="{% url 'subject-list' %}"><i class="fas fa-book-reader"></i> <span> Subjects</span> <span class="menu-arrow"></span></a>
                         <ul>
-                           <li><a href="subjects.html">Subject List</a></li>
-                           <li><a href="add-subject.html">Subject Add</a></li>
-                           <li><a href="edit-subject.html">Subject Edit</a></li>
+                           <li><a href="{% url 'subject-list' %}">Subject List</a></li>
+                           <li><a href="{% url 'subject-create' %}">Subject Add</a></li>
                         </ul>
                      </li>
                      <li class="menu-title">
@@ -144,7 +143,7 @@
                         </ul>
                      </li>
                      <li>
-                        <a href="holiday.html"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
+                        <a href="{% url 'holiday-list' %}"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
                      </li>
                      <li>
                         <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
@@ -239,10 +238,11 @@
             </div>
          </div>
 
-
-         {% block body %}
-            
-         {% endblock %}
+         <div class="page-wrapper">
+            {% block content %}
+               
+            {% endblock %}
+         </div>
 
       </div>
 

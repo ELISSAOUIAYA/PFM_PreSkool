@@ -1,0 +1,94 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8 offset-md-2">
+            <h2>{% if holiday %}✏️ Modifier un Jour Férié{% else %}➕ Ajouter un Jour Férié{% endif %}</h2>
+            <hr>
+
+            <form method="POST" class="mt-4">
+                {% csrf_token %}
+
+                <div class="form-group mb-3">
+                    <label for="name"><strong>Nom du Jour Férié <span class="text-danger">*</span></strong></label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="name" 
+                        name="name" 
+                        value="{% if holiday %}{{ holiday.name }}{% endif %}"
+                        placeholder="ex: Noël, Vacation d'été, Ramadan"
+                        required
+                    >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="start_date"><strong>Date de Début <span class="text-danger">*</span></strong></label>
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        id="start_date" 
+                        name="start_date" 
+                        value="{% if holiday %}{{ holiday.start_date|date:'Y-m-d' }}{% endif %}"
+                        required
+                    >
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="end_date"><strong>Date de Fin <span class="text-danger">*</span></strong></label>
+                    <input 
+                        type="date" 
+                        class="form-control" 
+                        id="end_date" 
+                        name="end_date" 
+                        value="{% if holiday %}{{ holiday.end_date|date:'Y-m-d' }}{% endif %}"
+                        required
+                    >
+                    <small class="form-text text-muted">Doit être >= à la date de début</small>
+                </div>
+
+                <div class="form-group mb-3">
+                    <label for="description"><strong>Description</strong></label>
+                    <textarea 
+                        class="form-control" 
+                        id="description" 
+                        name="description" 
+                        rows="4"
+                        placeholder="Détails du jour férié..."
+                    >{% if holiday %}{{ holiday.description }}{% endif %}</textarea>
+                </div>
+
+                <div class="form-check mb-4">
+                    <input 
+                        type="checkbox" 
+                        class="form-check-input" 
+                        id="is_national_holiday" 
+                        name="is_national_holiday"
+                        {% if holiday and holiday.is_national_holiday %}checked{% endif %}
+                    >
+                    <label class="form-check-label" for="is_national_holiday">
+                        <strong>Jour férié national</strong>
+                        <small class="text-muted">(différent des vacances de l'établissement)</small>
+                    </label>
+                </div>
+
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Note:</strong> Les jours fériés nationaux sont reconnus dans tout le pays.
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-success">
+                        <i class="fas fa-save"></i> 
+                        {% if holiday %}Modifier{% else %}Créer{% endif %}
+                    </button>
+                    <a href="{% url 'holiday-list' %}" class="btn btn-secondary">
+                        <i class="fas fa-times"></i> Annuler
+                    </a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

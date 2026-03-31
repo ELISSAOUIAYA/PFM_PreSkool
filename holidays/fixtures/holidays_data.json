@@ -1,0 +1,67 @@
+[
+  {
+    "model": "holidays.holiday",
+    "pk": 1,
+    "fields": {
+      "name": "Noël",
+      "start_date": "2025-12-25",
+      "end_date": "2025-12-25",
+      "is_national_holiday": true,
+      "description": "Fête de Noël",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "holidays.holiday",
+    "pk": 2,
+    "fields": {
+      "name": "Jour de l'An",
+      "start_date": "2026-01-01",
+      "end_date": "2026-01-01",
+      "is_national_holiday": true,
+      "description": "Premier jour de l'année",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "holidays.holiday",
+    "pk": 3,
+    "fields": {
+      "name": "Vacances d'été",
+      "start_date": "2025-07-01",
+      "end_date": "2025-08-31",
+      "is_national_holiday": false,
+      "description": "Vacances scolaires d'été",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "holidays.holiday",
+    "pk": 4,
+    "fields": {
+      "name": "Vacances de Pâques",
+      "start_date": "2025-04-07",
+      "end_date": "2025-04-21",
+      "is_national_holiday": false,
+      "description": "Vacances scolaires de Pâques",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "holidays.holiday",
+    "pk": 5,
+    "fields": {
+      "name": "Fermeture administrative",
+      "start_date": "2025-11-01",
+      "end_date": "2025-11-01",
+      "is_national_holiday": true,
+      "description": "Fête d'Assomption",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  }
+]

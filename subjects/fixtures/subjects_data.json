@@ -1,0 +1,72 @@
+[
+  {
+    "model": "subjects.subject",
+    "pk": 1,
+    "fields": {
+      "name": "Mathématiques",
+      "code": "MTH101",
+      "department": 1,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours de mathématiques fondamentales",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 2,
+    "fields": {
+      "name": "Français",
+      "code": "FRN101",
+      "department": 1,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours de langue française",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 3,
+    "fields": {
+      "name": "Anglais",
+      "code": "ENG101",
+      "department": 2,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours d'anglais",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 4,
+    "fields": {
+      "name": "Sciences Physiques",
+      "code": "PHY101",
+      "department": 3,
+      "credit_hours": 4,
+      "is_optional": false,
+      "description": "Cours de physique et chimie",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 5,
+    "fields": {
+      "name": "Histoire",
+      "code": "HIS101",
+      "department": 2,
+      "credit_hours": 2,
+      "is_optional": true,
+      "description": "Cours d'histoire générale",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  }
+]

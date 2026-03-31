@@ -1,0 +1,38 @@
+[
+  {
+    "model": "departments.department",
+    "pk": 1,
+    "fields": {
+      "name": "Department of Science",
+      "code": "SCIENCE",
+      "description": "Sciences and Mathematics",
+      "head_of_department": "Dr. John Smith",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "departments.department",
+    "pk": 2,
+    "fields": {
+      "name": "Department of Arts",
+      "code": "ARTS",
+      "description": "Humanities and Social Sciences",
+      "head_of_department": "Prof. Jane Doe",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "departments.department",
+    "pk": 3,
+    "fields": {
+      "name": "Department of Technology",
+      "code": "TECH",
+      "description": "Information Technology and Computer Science",
+      "head_of_department": "Dr. Alan Brown",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  }
+]
