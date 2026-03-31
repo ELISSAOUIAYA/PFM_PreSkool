@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Department
 
+<<<<<<< HEAD
 @admin.register(Department)
 class DepartmentAdmin(admin.ModelAdmin):
     list_display = ('name', 'code', 'head_of_department', 'created_at')
@@ -20,3 +21,6 @@ class DepartmentAdmin(admin.ModelAdmin):
         }),
     )
     readonly_fields = ('created_at', 'updated_at')
+=======
+admin.site.register(Department)
+>>>>>>> 4080006f24c039c4831eaec79e80e170c62651d0
