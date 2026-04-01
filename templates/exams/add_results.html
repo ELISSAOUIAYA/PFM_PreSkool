@@ -1,0 +1,43 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow">
+                <div class="card-header bg-success text-white">
+                    <h3 class="mb-0">Saisir une Note</h3>
+                </div>
+                <div class="card-body">
+                    <form method="POST">
+                        {% csrf_token %}
+                        <div class="mb-3">
+                            <label class="form-label">Sélectionner l'Étudiant</label>
+                            <select name="student" class="form-select">
+                                <option>-- Choisir un étudiant --</option>
+                                </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Examen / Matière</label>
+                            <select name="exam" class="form-select">
+                                <option>-- Choisir l'examen --</option>
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Note obtenue (sur 20)</label>
+                            <input type="number" name="marks" step="0.25" class="form-control" placeholder="Ex: 14.5">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Commentaires (Optionnel)</label>
+                            <textarea name="comments" class="form-control" rows="3"></textarea>
+                        </div>
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-success">Enregistrer le résultat</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
