@@ -1,0 +1,342 @@
+[
+  {
+    "model": "student.Student",
+    "pk": 1,
+    "fields": {
+      "student_id": "ST-2026-001",
+      "first_name": "Yassine",
+      "last_name": "Amrani",
+      "gender": "Male",
+      "date_of_birth": "2005-05-15",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-10",
+      "mobile_number": "0611223344",
+      "admission_number": "ADM001",
+      "section": "A",
+      "department": 1
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 2,
+    "fields": {
+      "student_id": "ST-2026-002",
+      "first_name": "Sara",
+      "last_name": "Bennani",
+      "gender": "Female",
+      "date_of_birth": "2005-08-20",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-10",
+      "mobile_number": "0622334455",
+      "admission_number": "ADM002",
+      "section": "A",
+      "department": 1
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 3,
+    "fields": {
+      "student_id": "ST-2026-003",
+      "first_name": "Mehdi",
+      "last_name": "Zahiri",
+      "gender": "Male",
+      "date_of_birth": "2004-12-05",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-11",
+      "mobile_number": "0633445566",
+      "admission_number": "ADM003",
+      "section": "B",
+      "department": 1
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 4,
+    "fields": {
+      "student_id": "ST-2026-004",
+      "first_name": "Laila",
+      "last_name": "Mansouri",
+      "gender": "Female",
+      "date_of_birth": "2005-02-14",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-11",
+      "mobile_number": "0644556677",
+      "admission_number": "ADM004",
+      "section": "A",
+      "department": 1
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 5,
+    "fields": {
+      "student_id": "ST-2026-005",
+      "first_name": "Omar",
+      "last_name": "Kabbaj",
+      "gender": "Male",
+      "date_of_birth": "2005-11-30",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-12",
+      "mobile_number": "0655667788",
+      "admission_number": "ADM005",
+      "section": "B",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 6,
+    "fields": {
+      "student_id": "ST-2026-006",
+      "first_name": "Salma",
+      "last_name": "Fassi",
+      "gender": "Female",
+      "date_of_birth": "2005-04-22",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-12",
+      "mobile_number": "0666778899",
+      "admission_number": "ADM006",
+      "section": "A",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 7,
+    "fields": {
+      "student_id": "ST-2026-007",
+      "first_name": "Hamza",
+      "last_name": "Tazi",
+      "gender": "Male",
+      "date_of_birth": "2004-09-18",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-13",
+      "mobile_number": "0677889900",
+      "admission_number": "ADM007",
+      "section": "B",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 8,
+    "fields": {
+      "student_id": "ST-2026-008",
+      "first_name": "Sofia",
+      "last_name": "Alaoui",
+      "gender": "Female",
+      "date_of_birth": "2005-01-01",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-13",
+      "mobile_number": "0688990011",
+      "admission_number": "ADM008",
+      "section": "A",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 9,
+    "fields": {
+      "student_id": "ST-2026-009",
+      "first_name": "Adam",
+      "last_name": "Chraibi",
+      "gender": "Male",
+      "date_of_birth": "2005-06-12",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-14",
+      "mobile_number": "0699001122",
+      "admission_number": "ADM009",
+      "section": "B",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 10,
+    "fields": {
+      "student_id": "ST-2026-010",
+      "first_name": "Ines",
+      "last_name": "Ghabri",
+      "gender": "Female",
+      "date_of_birth": "2005-03-25",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-14",
+      "mobile_number": "0612345678",
+      "admission_number": "ADM010",
+      "section": "A",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 11,
+    "fields": {
+      "student_id": "ST-2026-011",
+      "first_name": "Rayan",
+      "last_name": "Haddad",
+      "gender": "Male",
+      "date_of_birth": "2005-07-07",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-15",
+      "mobile_number": "0623456789",
+      "admission_number": "ADM011",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 12,
+    "fields": {
+      "student_id": "ST-2026-012",
+      "first_name": "Ghita",
+      "last_name": "Laroui",
+      "gender": "Female",
+      "date_of_birth": "2005-10-10",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-15",
+      "mobile_number": "0634567890",
+      "admission_number": "ADM012",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 13,
+    "fields": {
+      "student_id": "ST-2026-013",
+      "first_name": "Ismail",
+      "last_name": "Jebbar",
+      "gender": "Male",
+      "date_of_birth": "2004-05-05",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-16",
+      "mobile_number": "0645678901",
+      "admission_number": "ADM013",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 14,
+    "fields": {
+      "student_id": "ST-2026-014",
+      "first_name": "Nour",
+      "last_name": "Sajid",
+      "gender": "Female",
+      "date_of_birth": "2005-12-12",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-16",
+      "mobile_number": "0656789012",
+      "admission_number": "ADM014",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 15,
+    "fields": {
+      "student_id": "ST-2026-015",
+      "first_name": "Ali",
+      "last_name": "Tahiri",
+      "gender": "Male",
+      "date_of_birth": "2005-09-09",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-17",
+      "mobile_number": "0667890123",
+      "admission_number": "ADM015",
+      "section": "B",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 16,
+    "fields": {
+      "student_id": "ST-2026-016",
+      "first_name": "Kenza",
+      "last_name": "Filali",
+      "gender": "Female",
+      "date_of_birth": "2005-02-28",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-17",
+      "mobile_number": "0678901234",
+      "admission_number": "ADM016",
+      "section": "A",
+      "department": 1
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 17,
+    "fields": {
+      "student_id": "ST-2026-017",
+      "first_name": "Sami",
+      "last_name": "Benjelloun",
+      "gender": "Male",
+      "date_of_birth": "2005-11-11",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-18",
+      "mobile_number": "0689012345",
+      "admission_number": "ADM017",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 18,
+    "fields": {
+      "student_id": "ST-2026-018",
+      "first_name": "Mona",
+      "last_name": "Radi",
+      "gender": "Female",
+      "date_of_birth": "2005-04-15",
+      "student_class": "IDAI-2",
+      "joining_date": "2026-01-18",
+      "mobile_number": "0690123456",
+      "admission_number": "ADM018",
+      "section": "B",
+      "department": 2
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 19,
+    "fields": {
+      "student_id": "ST-2026-019",
+      "first_name": "Zaid",
+      "last_name": "Lahlou",
+      "gender": "Male",
+      "date_of_birth": "2004-01-20",
+      "student_class": "IDAI-3",
+      "joining_date": "2026-01-19",
+      "mobile_number": "0601234567",
+      "admission_number": "ADM019",
+      "section": "C",
+      "department": 3
+    }
+  },
+  {
+    "model": "student.Student",
+    "pk": 20,
+    "fields": {
+      "student_id": "ST-2026-020",
+      "first_name": "Dina",
+      "last_name": "Ouazzani",
+      "gender": "Female",
+      "date_of_birth": "2005-12-25",
+      "student_class": "IDAI-1",
+      "joining_date": "2026-01-19",
+      "mobile_number": "0612345670",
+      "admission_number": "ADM020",
+      "section": "A",
+      "department": 1
+    }
+  }
+]
