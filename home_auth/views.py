@@ -33,6 +33,7 @@ def signup_view(request):
         messages.success(request, 'Signup successful!') 
         return redirect('index') 
     return render(request, 'authentication/register.html')
+
 def login_view(request): 
     if request.method == 'POST': 
         email = request.POST['email'] 
@@ -56,10 +57,11 @@ def login_view(request):
         else: 
             messages.error(request, 'Invalid credentials') 
     return render(request, 'authentication/login.html') 
+
 def logout_view(request): 
     logout(request) 
     messages.success(request, 'You have been logged out.') 
     return redirect('index') 
-def forgot_password_view(request):
-    return render(request, 'authentication/forgot-password.html') # Assure-toi que le fichier HTML existe
 
+def forgot_password_view(request):
+    return render(request, 'authentication/forgot-password.html') 
