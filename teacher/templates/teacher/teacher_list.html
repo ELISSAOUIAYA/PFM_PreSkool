@@ -37,11 +37,18 @@
                                         <td>{{ teacher.gender }}</td>
                                         <td>{{ teacher.phone }}</td>
                                         <td class="text-right">
-                                            <div class="actions">
-                                                <a href="#" class="btn btn-sm bg-success-light mr-2"><i class="fas fa-pen"></i></a>
-                                                <a href="#" class="btn btn-sm bg-danger-light"><i class="fas fa-trash"></i></a>
-                                            </div>
-                                        </td>
+    <div class="actions">
+        <a href="{% url 'edit_teacher' teacher.id %}" class="btn btn-sm bg-success-light mr-2">
+            <i class="fas fa-pen"></i>
+        </a>
+        
+        <a href="{% url 'delete_teacher' teacher.id %}" 
+           class="btn btn-sm bg-danger-light" 
+           onclick="return confirm('Êtes-vous sûr de vouloir supprimer cet enseignant ?');">
+            <i class="fas fa-trash"></i>
+        </a>
+    </div>
+</td>
                                     </tr>
                                     {% empty %}
                                     <tr>

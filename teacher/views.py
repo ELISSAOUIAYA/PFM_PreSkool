@@ -4,6 +4,9 @@ from django.shortcuts import redirect
 from home_auth.models import CustomUser
 from departments.models import Department
 from .models import Teacher
+from django.shortcuts import get_object_or_404, redirect
+from django.contrib import messages
+
 
 def teacher_list(request):
     teachers = Teacher.objects.all()
@@ -41,3 +44,39 @@ def teacher_dashboard(request):
         'total_teachers': count,
     }
     return render(request, 'teacher/teacher_dashboard.html', context)
+def edit_teacher(request, pk):
+    teacher = get_object_or_404(Teacher, pk=pk)
+    user = teacher.user # On récupère l'utilisateur lié
+    
+    if request.method == "POST":
+        # 1. Mise à jour de la table USER (Nom, Prénom, Email)
+        user.first_name = request.POST.get('first_name')
+        user.last_name = request.POST.get('last_name')
+        user.email = request.POST.get('email')
+        user.save() # On enregistre l'utilisateur
+
+        # 2. Mise à jour de la table TEACHER (Téléphone, Département, Genre)
+        teacher.phone = request.POST.get('phone')
+        teacher.gender = request.POST.get('gender')
+        
+        # Pour le département, on récupère l'objet
+        dept_id = request.POST.get('department')
+        teacher.department = get_object_or_404(Department, id=dept_id)
+        
+        teacher.save() # On enregistre le professeur
+        
+        return redirect('teacher_list')
+
+    departments = Department.objects.all()
+    return render(request, 'teacher/edit_teacher.html', {
+        'teacher': teacher,
+        'departments': departments
+    })
+def delete_teacher(request, pk):
+    teacher = get_object_or_404(Teacher, pk=pk)
+    
+    nom_prof = f"{teacher.user.first_name} {teacher.user.last_name}"
+    teacher.delete()
+    messages.success(request, f"L'enseignant {nom_prof} a été supprimé avec succès.")
+    
+    return redirect('teacher_list')
