@@ -104,15 +104,19 @@
                            <li><a href="">Student Edit</a></li>
                         </ul>
                      </li>
-                     <li class="submenu">
-                        <a href="#"><i class="fas fa-chalkboard-teacher"></i> <span> Teachers</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                           <li><a href="{% url 'teacher_list' %}">Teacher List</a></li>
-                           <li><a href="teacher-details.html">Teacher View</a></li>
-                           <li><a href="{% url 'add_teacher' %}">Teacher Add</a></li>
-                           <li><a href="edit-teacher.html">Teacher Edit</a></li>
-                        </ul>
-                     </li>
+                    <li class="submenu">
+    <a href="{% url 'teacher_list' %}">
+        <i class="fas fa-chalkboard-teacher"></i> 
+        <span> Teachers</span> 
+        <span class="menu-arrow"></span>
+    </a>
+    <ul>
+        <li><a href="{% url 'teacher_list' %}">Teacher List</a></li>
+        <li><a href="teacher-details.html">Teacher View</a></li>
+        <li><a href="{% url 'add_teacher' %}">Teacher Add</a></li>
+        <li><a href="edit-teacher.html">Teacher Edit</a></li>
+    </ul>
+</li>
                      <li class="submenu">
                         <a href="#"><i class="fas fa-building"></i> <span> Departments</span> <span class="menu-arrow"></span></a>
                         <ul>
@@ -238,18 +242,11 @@
             </div>
          </div>
 
-<<<<<<< HEAD
          <div class="page-wrapper">
             {% block content %}
                
             {% endblock %}
          </div>
-=======
-
-         {% block content %}
-            
-         {% endblock %}
->>>>>>> 4080006f24c039c4831eaec79e80e170c62651d0
 
       </div>
 
