@@ -26,4 +26,5 @@ urlpatterns = [
     path('', include('subjects.urls')),
     path('', include('holidays.urls')),
     path('exams/', include('exams.urls')),
+    path('', include('departments.urls')),
 ]

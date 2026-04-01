@@ -1,0 +1,215 @@
+[
+  {
+    "model": "home_auth.customuser",
+    "pk": 2,
+    "fields": {
+      "username": "ahmed_smith",
+      "first_name": "Ahmed",
+      "last_name": "Smith",
+      "email": "ahmed.smith@school.com",
+      "password": "pbkdf2_sha256$600000$5XjK5R8yYZ9L2mN3P4q5r6$abcdefghijklmnopqrstuvwxyz123456=",
+      "is_staff": true,
+      "is_active": true,
+      "is_superuser": false,
+      "is_authorized": true,
+      "is_teacher": true,
+      "last_login": "2026-03-31T12:00:00Z",
+      "date_joined": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "home_auth.customuser",
+    "pk": 3,
+    "fields": {
+      "username": "fatima_johnson",
+      "first_name": "Fatima",
+      "last_name": "Johnson",
+      "email": "fatima.johnson@school.com",
+      "password": "pbkdf2_sha256$600000$5XjK5R8yYZ9L2mN3P4q5r6$abcdefghijklmnopqrstuvwxyz123456=",
+      "is_staff": true,
+      "is_active": true,
+      "is_superuser": false,
+      "is_authorized": true,
+      "is_teacher": true,
+      "last_login": "2026-03-31T12:00:00Z",
+      "date_joined": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "home_auth.customuser",
+    "pk": 4,
+    "fields": {
+      "username": "karim_chen",
+      "first_name": "Karim",
+      "last_name": "Chen",
+      "email": "karim.chen@school.com",
+      "password": "pbkdf2_sha256$600000$5XjK5R8yYZ9L2mN3P4q5r6$abcdefghijklmnopqrstuvwxyz123456=",
+      "is_staff": true,
+      "is_active": true,
+      "is_superuser": false,
+      "is_authorized": true,
+      "is_teacher": true,
+      "last_login": "2026-03-31T12:00:00Z",
+      "date_joined": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "teacher.teacher",
+    "pk": 1,
+    "fields": {
+      "user": 2,
+      "employee_id": "EMP001",
+      "gender": "Male",
+      "phone": "+212 6 12 34 56 78",
+      "department": 1
+    }
+  },
+  {
+    "model": "teacher.teacher",
+    "pk": 2,
+    "fields": {
+      "user": 3,
+      "employee_id": "EMP002",
+      "gender": "Female",
+      "phone": "+212 6 98 76 54 32",
+      "department": 2
+    }
+  },
+  {
+    "model": "teacher.teacher",
+    "pk": 3,
+    "fields": {
+      "user": 4,
+      "employee_id": "EMP003",
+      "gender": "Male",
+      "phone": "+212 6 55 66 77 88",
+      "department": 3
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 1,
+    "fields": {
+      "name": "Mathématiques",
+      "code": "MTH101",
+      "department": 1,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours de mathématiques fondamentales",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 2,
+    "fields": {
+      "name": "Physique",
+      "code": "PHY101",
+      "department": 1,
+      "credit_hours": 4,
+      "is_optional": false,
+      "description": "Cours de physique générale",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 3,
+    "fields": {
+      "name": "Chimie",
+      "code": "CHM101",
+      "department": 1,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours de chimie et laboratoire",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 4,
+    "fields": {
+      "name": "Français",
+      "code": "FRN101",
+      "department": 2,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours de langue française et littérature",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 5,
+    "fields": {
+      "name": "Anglais",
+      "code": "ENG101",
+      "department": 2,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Cours d'anglais et communication",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 6,
+    "fields": {
+      "name": "Histoire",
+      "code": "HIS101",
+      "department": 2,
+      "credit_hours": 2,
+      "is_optional": true,
+      "description": "Histoire générale et contemporaine",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 7,
+    "fields": {
+      "name": "Informatique",
+      "code": "CS101",
+      "department": 3,
+      "credit_hours": 4,
+      "is_optional": false,
+      "description": "Fondamentaux de la programmation",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 8,
+    "fields": {
+      "name": "Base de Données",
+      "code": "DB101",
+      "department": 3,
+      "credit_hours": 3,
+      "is_optional": false,
+      "description": "Gestion et conception de bases de données",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  },
+  {
+    "model": "subjects.subject",
+    "pk": 9,
+    "fields": {
+      "name": "Réseaux Informatiques",
+      "code": "NET101",
+      "department": 3,
+      "credit_hours": 3,
+      "is_optional": true,
+      "description": "Architecture et protocoles de réseaux",
+      "created_at": "2026-03-31T12:00:00Z",
+      "updated_at": "2026-03-31T12:00:00Z"
+    }
+  }
+]

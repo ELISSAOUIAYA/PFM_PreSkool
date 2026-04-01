@@ -1,0 +1,41 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>⚠️ Supprimer le Département</h2>
+            <hr>
+        </div>
+    </div>
+
+    <div class="alert alert-warning">
+        <strong>Attention!</strong> Êtes-vous sûr de vouloir supprimer ce département?
+    </div>
+
+    <div class="card">
+        <div class="card-header bg-danger text-white">
+            <h5 class="mb-0">{{ department.name }}</h5>
+        </div>
+        <div class="card-body">
+            <p><strong>Code:</strong> {{ department.code }}</p>
+            <p><strong>Chef de Département:</strong> {{ department.head_teacher|default:"Non assigné" }}</p>
+            {% if department.description %}
+            <p><strong>Description:</strong> {{ department.description }}</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <form method="POST" style="display:inline;">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Confirmer la Suppression
+            </button>
+        </form>
+        <a href="{% url 'department-detail' department.pk %}" class="btn btn-secondary">
+            <i class="fas fa-times"></i> Annuler
+        </a>
+    </div>
+</div>
+{% endblock %}
