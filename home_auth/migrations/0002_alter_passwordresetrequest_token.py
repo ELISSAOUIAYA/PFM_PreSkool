@@ -18,8 +18,5 @@ class Migration(migrations.Migration):
             name='token',
 
             field=models.CharField(default='pVkByCedH66eEjzgd3IQk1NEj2SCmsWr', editable=False, max_length=32, unique=True),
-
-            field=models.CharField(default='ccyBtcIEKurzkjtTlAsGRgcUsD4ne2CZ', editable=False, max_length=32, unique=True),
-
         ),
     ]

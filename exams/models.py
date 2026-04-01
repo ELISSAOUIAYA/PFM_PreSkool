@@ -1,4 +1,5 @@
 from django.db import models
+from student.models import Student # Vérifie si ton app s'appelle 'student' ou 'students'
 
 class Subject(models.Model):
     """Représente une matière (ex: Python, Mathématiques)"""
@@ -11,6 +12,15 @@ class Subject(models.Model):
     class Meta:
         verbose_name = "Matière"
         verbose_name_plural = "Matières"
+
+class Mark(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    exam = models.ForeignKey('Exam', on_delete=models.CASCADE)
+    score = models.DecimalField(max_digits=5, decimal_places=2) # ex: 15.50
+    remarks = models.TextField(blank=True, null=True) # Commentaires du prof
+
+    def __str__(self):
+        return f"{self.student} - {self.exam.name} : {self.score}"
 
 
 class Exam(models.Model):

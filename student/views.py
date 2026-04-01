@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Student, Parent
+from exams.models import Exam 
+from subjects.models import Subject
+from django.contrib import messages
 def student_list(request):
     
     return render(request, 'students/students.html')
@@ -69,3 +72,19 @@ def view_student(request, student_id):
     return render(request, 'students/student-details.html')
 def delete_student(request, student_id):
     return redirect('student_list')
+def student_dashboard(request):
+    # Statistiques pour les cartes du haut
+    count_students = Student.objects.count()
+    count_subjects = Subject.objects.count()
+    count_exams = Exam.objects.count()
+    
+    # On peut aussi récupérer les 5 derniers étudiants ajoutés pour une liste rapide
+    recent_students = Student.objects.all().order_by('-id')[:5]
+
+    context = {
+        'count_students': count_students,
+        'count_subjects': count_subjects,
+        'count_exams': count_exams,
+        'recent_students': recent_students,
+    }
+    return render(request, 'dashboard/student_dashboard.html', context)
