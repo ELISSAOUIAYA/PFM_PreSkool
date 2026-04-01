@@ -4,9 +4,19 @@ from .models import Student, Parent
 from exams.models import Exam 
 from subjects.models import Subject
 from django.contrib import messages
+
 def student_list(request):
+
+    students = Student.objects.all()
     
-    return render(request, 'students/students.html')
+    count_students = students.count()
+    
+    context = {
+        'students': students,
+        'count_students': count_students,
+    }
+    return render(request, 'students/students.html', context)
+
 def add_student(request):
  if request.method == 'POST':
 # Récupérer les données de l'étudiant

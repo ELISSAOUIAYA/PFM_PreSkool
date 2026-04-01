@@ -1,0 +1,56 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Gestion des Utilisateurs</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Nom d'utilisateur</th>
+                                    <th>Email</th>
+                                    <th>Rôle</th>
+                                    <th class="text-right">Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for u in users %}
+                                <tr>
+                                    <td>{{ u.username }}</td>
+                                    <td>{{ u.email }}</td>
+                                    <td>
+                                        {% if u.is_admin %}<span class="badge badge-danger">Admin</span>{% endif %}
+                                        {% if u.is_teacher %}<span class="badge badge-warning">Professeur</span>{% endif %}
+                                        {% if u.is_student %}<span class="badge badge-info">Étudiant</span>{% endif %}
+                                    </td>
+                                    <td class="text-right">
+                                        <div class="actions">
+                                            <a href="/admin/home_auth/customuser/{{ u.id }}/change/" class="btn btn-sm bg-success-light mr-2">
+    <i class="fas fa-pen"></i>
+</a>
+                                            <a href="{% url 'delete_user' u.id %}" class="btn btn-sm bg-danger-light" onclick="return confirm('Es-tu sûre de vouloir supprimer cet utilisateur ?')">
+    <i class="fas fa-trash"></i>
+</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
