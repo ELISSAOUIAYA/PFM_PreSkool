@@ -1,38 +1,51 @@
-{% extends 'home/base.html' %}
-
+{% extends 'Home/base.html' %}
 {% block content %}
-<div class="container mt-5">
-    <div class="row justify-content-center">
-        <div class="col-md-6">
-            <div class="card shadow">
-                <div class="card-header bg-success text-white">
-                    <h3 class="mb-0">Saisir une Note</h3>
-                </div>
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">Saisir les Notes</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
                 <div class="card-body">
                     <form method="POST">
                         {% csrf_token %}
-                        <div class="mb-3">
-                            <label class="form-label">Sélectionner l'Étudiant</label>
-                            <select name="student" class="form-select">
-                                <option>-- Choisir un étudiant --</option>
-                                </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Examen / Matière</label>
-                            <select name="exam" class="form-select">
-                                <option>-- Choisir l'examen --</option>
-                            </select>
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Note obtenue (sur 20)</label>
-                            <input type="number" name="marks" step="0.25" class="form-control" placeholder="Ex: 14.5">
-                        </div>
-                        <div class="mb-3">
-                            <label class="form-label">Commentaires (Optionnel)</label>
-                            <textarea name="comments" class="form-control" rows="3"></textarea>
-                        </div>
-                        <div class="d-grid">
-                            <button type="submit" class="btn btn-success">Enregistrer le résultat</button>
+                        <div class="row">
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Étudiant</label>
+                                    <select class="form-control" name="student_id" required>
+                                        <option value="">Sélectionner l'élève</option>
+                                        {% for s in students %}
+                                        <option value="{{ s.id }}">{{ s.first_name }} {{ s.last_name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Examen</label>
+                                    <select class="form-control" name="exam_id" required>
+                                        {% for e in exams %}
+                                        <option value="{{ e.id }}">{{ e.name }}</option>
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-12 col-sm-6">
+                                <div class="form-group">
+                                    <label>Note (Score)</label>
+                                    <input type="number" step="0.01" class="form-control" name="score" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="btn btn-primary">Enregistrer la Note</button>
+                            </div>
                         </div>
                     </form>
                 </div>

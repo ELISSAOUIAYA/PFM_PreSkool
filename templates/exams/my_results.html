@@ -1,33 +1,38 @@
-{% extends 'home/base.html' %} {% block content %}
-<div class="container mt-5">
-    <h2 class="mb-4">Mes Résultats d'Examens</h2>
-    <table class="table table-striped table-hover">
-        <thead class="table-dark">
-            <tr>
-                <th>Matière</th>
-                <th>Type</th>
-                <th>Date</th>
-                <th>Note obtenue</th>
-                <th>Statut</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for res in results %}
-            <tr>
-                <td>{{ res.exam }}</td>
-                <td>{{ res.type }}</td>
-                <td>{{ res.date }}</td>
-                <td><strong>{{ res.note }} / {{ res.total }}</strong></td>
-                <td>
-                    {% if res.note >= 10 %}
-                        <span class="badge bg-success">Validé</span>
-                    {% else %}
-                        <span class="badge bg-danger">Rattrapage</span>
-                    {% endif %}
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+{% extends 'Home/base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <h3 class="page-title">Mes Résultats</h3>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center mb-0">
+                            <thead>
+                                <tr>
+                                    <th>Examen</th>
+                                    <th>Note</th>
+                                    <th>Remarques</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for m in results %}
+                                <tr>
+                                    <td>{{ m.exam.name }}</td>
+                                    <td><span class="badge badge-success">{{ m.score }}</span></td>
+                                    <td>{{ m.remarks|default:"-" }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr><td colspan="3" class="text-center">Aucune note disponible.</td></tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 {% endblock %}
