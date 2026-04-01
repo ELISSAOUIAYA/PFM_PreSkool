@@ -73,9 +73,9 @@
                            <p class="text-muted mb-0">Administrator</p>
                         </div>
                      </div>
-                     <a class="dropdown-item" href="profile.html">My Profile</a>
-                     <a class="dropdown-item" href="inbox.html">Inbox</a>
-                     <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
+                       <a class="dropdown-item" href="profile.html">My Profile</a>
+                       <a class="dropdown-item" href="inbox.html">Inbox</a>
+                       <a class="dropdown-item" href="{% url 'logout' %}">Logout</a>
                   </div>
                </li>
             </ul>
@@ -84,23 +84,18 @@
             <div class="sidebar-inner slimscroll">
                <div id="sidebar-menu" class="sidebar-menu">
                   <ul>
-                     <li class="menu-title">
-                        <span>Main Menu</span>
-                     
-                     </li>
-                     <li class="submenu active">
-                        <a href="#"><i class="fas fa-user-graduate"></i> <span> Dashboard</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                           <li><a href="index.html" class="active">Admin Dashboard</a></li>
-                           <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
-                           <li><a href="student-dashboard.html">Student Dashboard</a></li>
-                        </ul>
-                     </li>
-                    
+                     <li class="menu-title"> 
+    <span>Main Menu</span>
+</li>
+<li class="{% if 'admin-dashboard' in request.path %}active{% endif %}">
+    <a href="{% url 'admin_dashboard' %}"><i class="fas fa-th-large"></i> <span>Dashboard</span></a>
+</li>
                      <li class="submenu">
                         <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
                         <ul>
-                           <li><a href="url 'student_dashboard'">Student Dashboard</a></li>
+                            {% if not user.is_admin %} 
+                            <li><a href="{% url 'student_dashboard' %}">Student Dashboard</a></li>
+                            {% endif %}
                            <li><a href="{% url 'student_list' %}">Student List</a></li>
                            <li><a href="">Student View</a></li>
                            <li><a href="{% url 'add_student' %}">Student Add</a></li>
@@ -133,29 +128,19 @@
         <li><a href="{% url 'subject-create' %}" class="{% if request.resolver_match.url_name == 'subject-create' %}active{% endif %}">Subject Add</a></li>
     </ul>
 </li>
-                     <li class="menu-title">
-                        <span>Management</span>
+                     <li class="menu-title"> 
+                  <span>Management</span>
                      </li>
-                     <li class="submenu">
-                        <a href="#"><i class="fas fa-file-invoice-dollar"></i> <span> Accounts</span> <span class="menu-arrow"></span></a>
-                        <ul>
-                           <li><a href="fees-collections.html">Fees Collection</a></li>
-                           <li><a href="expenses.html">Expenses</a></li>
-                           <li><a href="salary.html">Salary</a></li>
-                           <li><a href="add-fees-collection.html">Add Fees</a></li>
-                           <li><a href="add-expenses.html">Add Expenses</a></li>
-                           <li><a href="add-salary.html">Add Salary</a></li>
-                        </ul>
-                     </li>
+<li class="{% if 'users' in request.path %}active{% endif %}">
+    <a href="{% url 'user_list' %}"><i class="fas fa-users-cog"></i> <span>Utilisateurs</span></a>
+</li>
                      <li>
                         <a href="{% url 'holiday-list' %}"><i class="fas fa-holly-berry"></i> <span>Holiday</span></a>
                      </li>
                      <li>
                         <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                      </li>
-                     <li>
-                        <a href="{% url 'exam_list' %}">><i class="fas fa-clipboard-list"></i> <span>Exam list</span></a>
-                        <li class="submenu">
+                     
     <a href="#"><i class="fas fa-clipboard-list"></i> <span> Examens & Notes</span> <span class="menu-arrow"></span></a>
     <ul>
         <li><a href="{% url 'exam_list' %}">Liste des Examens</a></li>
@@ -164,7 +149,7 @@
             <li><a href="{% url 'add_mark' %}">Saisir les Notes</a></li>
         {% endif %}
 
-        <li><a href="{% url 'my_results' %}">Mes Résultats</a></li>
+        <li><a href="{% url 'my_results' %}"> Résultats</a></li>
     </ul>
 </li>
                      </li>
@@ -182,33 +167,7 @@
                      <li>
                         <a href="library.html"><i class="fas fa-book"></i> <span>Library</span></a>
                      </li>
-                     <li class="menu-title">
-                        <span>Pages</span>
-                     </li>
-                     <li class="submenu">
-                        <a href="#"><i class="fas fa-shield-alt"></i> <span> Authentication </span> <span class="menu-arrow"></span></a>
-                        <ul>
-                           <li><a href="{% url 'login' %}">Login</a></li>
-                           <li><a href="{% url 'signup' %}">Register</a></li>
-                           <li><a href="{% url 'forgot-password' %}">Forgot Password</a></li>
-                           <li><a href="error-404.html">Error Page</a></li>
-                        </ul>
-                     </li>
-                     <li>
-                        <a href="blank-page.html"><i class="fas fa-file"></i> <span>Blank Page</span></a>
-                     </li>
-                     <li class="menu-title">
-                        <span>Others</span>
-                     </li>
-                     <li>
-                        <a href="sports.html"><i class="fas fa-baseball-ball"></i> <span>Sports</span></a>
-                     </li>
-                     <li>
-                        <a href="hostel.html"><i class="fas fa-hotel"></i> <span>Hostel</span></a>
-                     </li>
-                     <li>
-                        <a href="transport.html"><i class="fas fa-bus"></i> <span>Transport</span></a>
-                     </li>
+                     
                      <li class="menu-title">
                         <span>UI Interface</span>
                      </li>
@@ -276,7 +235,8 @@
 
 <script src="{% static 'assets/js/script.js' %}"></script>
 
-    
+<script src="{% static 'assets/plugins/apexchart/apexcharts.min.js' %}"></script>
+
       <script type="text/javascript">
           document.addEventListener('DOMContentLoaded', function() {
               // Select the notification dropdown element
@@ -342,7 +302,22 @@
               }
           });
       </script>
-      
+      <script>
+    $(document).ready(function() {
+        // Force l'ouverture du dropdown si Bootstrap fait des siennes
+        $('.dropdown-toggle').click(function(e) {
+            e.preventDefault();
+            $(this).next('.dropdown-menu').toggleClass('show');
+        });
+        
+        // Ferme le menu si on clique ailleurs
+        $(document).click(function(e) {
+            if (!$(e.target).closest('.nav-item.dropdown').length) {
+                $('.dropdown-menu').removeClass('show');
+            }
+        });
+    });
+</script>
       
   </body>
   </html>
