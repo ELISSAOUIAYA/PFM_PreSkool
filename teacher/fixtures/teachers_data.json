@@ -1,0 +1,31 @@
+[
+  { "model": "home_auth.customuser", "pk": 20, "fields": { "username": "hassan_s", "first_name": "Hassan", "last_name": "Said", "email": "hassan@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 1, "fields": { "user": 20, "employee_id": "T2026-01", "gender": "Male", "phone": "0611223344", "department": 1 } },
+
+  { "model": "home_auth.customuser", "pk": 21, "fields": { "username": "jane_d", "first_name": "Jane", "last_name": "Doe", "email": "jane@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 2, "fields": { "user": 21, "employee_id": "T2026-02", "gender": "Female", "phone": "0622334455", "department": 1 } },
+
+  { "model": "home_auth.customuser", "pk": 22, "fields": { "username": "john_s", "first_name": "John", "last_name": "Smith", "email": "john@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 3, "fields": { "user": 22, "employee_id": "T2026-03", "gender": "Male", "phone": "0633445566", "department": 2 } },
+
+  { "model": "home_auth.customuser", "pk": 23, "fields": { "username": "alan_b", "first_name": "Alan", "last_name": "Brown", "email": "alan@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 4, "fields": { "user": 23, "employee_id": "T2026-04", "gender": "Male", "phone": "0644556677", "department": 3 } },
+
+  { "model": "home_auth.customuser", "pk": 24, "fields": { "username": "sophia_m", "first_name": "Sophia", "last_name": "Martin", "email": "sophia@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 5, "fields": { "user": 24, "employee_id": "T2026-05", "gender": "Female", "phone": "0655667788", "department": 2 } },
+
+  { "model": "home_auth.customuser", "pk": 25, "fields": { "username": "omar_e", "first_name": "Omar", "last_name": "El Amrani", "email": "omar@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 6, "fields": { "user": 25, "employee_id": "T2026-06", "gender": "Male", "phone": "0666778899", "department": 3 } },
+
+  { "model": "home_auth.customuser", "pk": 26, "fields": { "username": "elena_r", "first_name": "Elena", "last_name": "Rodriguez", "email": "elena@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 7, "fields": { "user": 26, "employee_id": "T2026-07", "gender": "Female", "phone": "0677889900", "department": 1 } },
+
+  { "model": "home_auth.customuser", "pk": 27, "fields": { "username": "david_w", "first_name": "David", "last_name": "Wilson", "email": "david@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 8, "fields": { "user": 27, "employee_id": "T2026-08", "gender": "Male", "phone": "0688990011", "department": 2 } },
+
+  { "model": "home_auth.customuser", "pk": 28, "fields": { "username": "amina_b", "first_name": "Amina", "last_name": "Bennani", "email": "amina@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 9, "fields": { "user": 28, "employee_id": "T2026-09", "gender": "Female", "phone": "0699001122", "department": 3 } },
+
+  { "model": "home_auth.customuser", "pk": 29, "fields": { "username": "lucas_d", "first_name": "Lucas", "last_name": "Dubois", "email": "lucas@preskool.ma", "is_active": true, "is_staff": true, "date_joined": "2026-01-01T12:00:00Z" } },
+  { "model": "teacher.teacher", "pk": 10, "fields": { "user": 29, "employee_id": "T2026-10", "gender": "Male", "phone": "0612345678", "department": 1 } }
+]

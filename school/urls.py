@@ -25,4 +25,5 @@ urlpatterns = [
     path('authentication/', include('home_auth.urls')),
     path('', include('subjects.urls')),
     path('', include('holidays.urls')),
+    path('', include('departments.urls')),
 ]

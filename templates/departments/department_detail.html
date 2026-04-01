@@ -1,0 +1,157 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>🏢 {{ department.name }}</h2>
+            <hr>
+        </div>
+        <div class="col-md-4 text-right">
+            <a href="{% url 'department-update' department.pk %}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+            <a href="{% url 'department-delete' department.pk %}" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Supprimer
+            </a>
+        </div>
+    </div>
+
+    <!-- Informations générales du département -->
+    <div class="card mt-4 mb-4">
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0"><i class="fas fa-info-circle"></i> Informations Générales</h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Code</h5>
+                    <p class="text-primary"><strong>{{ department.code }}</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Chef de Département</h5>
+                    <p><strong>{{ department.head_teacher|default:"Non assigné" }}</strong></p>
+                </div>
+            </div>
+            {% if department.description %}
+            <div class="mb-3">
+                <h5 class="text-muted">Description</h5>
+                <p>{{ department.description }}</p>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Créé</h5>
+                    <p>{{ department.created_at|date:"d/m/Y H:i" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Modifié</h5>
+                    <p>{{ department.updated_at|date:"d/m/Y H:i" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Filières (Subjects) -->
+    <div class="card mt-4 mb-4">
+        <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fas fa-book"></i> Filières ({{ department.subjects.count }})</h5>
+            <a href="{% url 'subject-create' %}?department={{ department.pk }}" class="btn btn-sm btn-light">
+                <i class="fas fa-plus"></i> Ajouter
+            </a>
+        </div>
+        <div class="card-body">
+            {% if department.subjects.all %}
+            <div class="table-responsive">
+                <table class="table table-sm">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Code</th>
+                            <th>Nom</th>
+                            <th>Crédits</th>
+                            <th>Type</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for subject in department.subjects.all %}
+                        <tr>
+                            <td><strong>{{ subject.code }}</strong></td>
+                            <td>{{ subject.name }}</td>
+                            <td>{{ subject.credit_hours }}</td>
+                            <td>
+                                {% if subject.is_optional %}
+                                    <span class="badge badge-warning">Optionnelle</span>
+                                {% else %}
+                                    <span class="badge badge-success">Obligatoire</span>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <a href="{% url 'subject-detail' subject.pk %}" class="btn btn-sm btn-info">
+                                    <i class="fas fa-eye"></i>
+                                </a>
+                                <a href="{% url 'subject-update' subject.pk %}" class="btn btn-sm btn-warning">
+                                    <i class="fas fa-edit"></i>
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            {% else %}
+            <p class="text-muted"><i class="fas fa-inbox"></i> Aucune filière pour le moment.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <!-- Professeurs -->
+    <div class="card mt-4 mb-4">
+        <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
+            <h5 class="mb-0"><i class="fas fa-chalkboard-user"></i> Professeurs ({{ department.teachers.count }})</h5>
+            <a href="{% url 'add-teacher-to-department' department.pk %}" class="btn btn-sm btn-light">
+                <i class="fas fa-plus"></i> Ajouter
+            </a>
+        </div>
+        <div class="card-body">
+            {% if department.teachers.all %}
+            <div class="row">
+                {% for teacher in department.teachers.all %}
+                <div class="col-md-6 mb-3">
+                    <div class="card border-left-success">
+                        <div class="card-body">
+                            <div class="d-flex justify-content-between align-items-start">
+                                <div>
+                                    <h6 class="mb-1"><strong>{{ teacher.user.first_name }} {{ teacher.user.last_name }}</strong></h6>
+                                    <p class="text-muted mb-1 small">ID: {{ teacher.employee_id }}</p>
+                                    <p class="text-muted mb-1 small">Genre: {{ teacher.gender }}</p>
+                                    <p class="text-muted small">
+                                        <i class="fas fa-phone"></i> {{ teacher.phone }}
+                                    </p>
+                                </div>
+                                <div>
+                                    {% if teacher.photo %}
+                                    <img src="{{ teacher.photo.url }}" alt="{{ teacher.user.first_name }}" class="rounded-circle" width="50" height="50">
+                                    {% else %}
+                                    <i class="fas fa-user-circle fa-3x text-muted"></i>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            {% else %}
+            <p class="text-muted"><i class="fas fa-inbox"></i> Aucun professeur pour le moment.</p>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'department-list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
+</div>
+{% endblock %}
