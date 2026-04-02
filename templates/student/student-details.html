@@ -1,206 +1,152 @@
 {% extends 'Home/base.html' %}
 {% load static %}
-{% block body %}
-   
 
+{% block content %}
+<style>
+    .profile-header {
+        background: linear-gradient(45deg, #3d5ee1, #708cf1);
+        border-radius: 15px 15px 0 0;
+        padding: 40px;
+        color: white;
+        margin-bottom: -50px;
+    }
+    .card-profile {
+        border: none;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        background: white;
+    }
+    .info-label { font-weight: 700; color: #333; width: 160px; display: inline-block; }
+    .section-divider { border-left: 4px solid #3d5ee1; padding-left: 15px; margin-bottom: 25px; font-weight: 700; }
+    
+    /* Style spécifique pour la progression */
+    .progress { height: 12px; border-radius: 10px; background-color: #eee; margin-bottom: 5px; }
+    .progress-bar { border-radius: 10px; }
+    .module-name { font-weight: 600; color: #444; font-size: 0.9rem; }
+</style>
 
-<div class="page-wrapper">
 <div class="content container-fluid">
-<div class="page-header">
-<div class="row">
-<div class="col-sm-12">
-<h3 class="page-title">Student Details</h3>
-<ul class="breadcrumb">
-<li class="breadcrumb-item"><a href="/student">Student</a></li>
-<li class="breadcrumb-item active">Student Details</li>
-</ul>
-</div>
-</div>
-</div>
-<div class="card">
-<div class="card-body">
-<div class="row">
-<div class="col-md-12">
-<div class="about-info">
-<h4>About Me</h4>
-<div class="media mt-3">
-<img src="{{student.student_image ? student.student_image.url : ''}}" class="mr-3" alt="...">
-<div class="media-body">
-<ul>
-<li>
-<span class="title-span">Full Name : </span>
-<span class="info-span">{{ student.first_name}}</span>
-</li>
-<li>
-<span class="title-span">Department : </span>
-<span class="info-span">{{student.section}}</span>
-</li>
-<li>
-<span class="title-span">Mobile : </span>
-<span class="info-span">{{student.mobile_number}}</span>
-</li>
-<li>
-<span class="title-span">Email : </span>
-<span class="info-span"><a href="{{student.parent.father_email}}" class="__cf_email__" data-cfemail="7216131b010b32151f131b1e5c111d1f">[email&#160;protected]</a></span>
-</li>
-<li>
-<span class="title-span">Gender : </span>
-<span class="info-span">{{student.gender}}</span>
-</li>
-<li>
-<span class="title-span">DOB : </span>
-<span class="info-span">{{student.date_of_birth}}</span>
-</li>
-</ul>
-</div>
-</div>
-<div class="row mt-3">
-<div class="col-md-12">
-<p>Hello I am Daisy Parks. Lorem Ipsum is simply dummy text of the printing and typesetting industry, simply dummy text of the printing and typesetting industry.</p>
-</div>
-</div>
-<div class="row follow-sec">
-<div class="col-md-4 mb-3">
-<div class="blue-box">
-<h3>2850</h3>
-<p>Followers</p>
-</div>
-</div>
-<div class="col-md-4 mb-3">
-<div class="blue-box">
-<h3>2050</h3>
-<p>Following</p>
-</div>
-</div>
-<div class="col-md-4 mb-3">
-<div class="blue-box">
-<h3>2950</h3>
-<p>Friends</p>
-</div>
-</div>
-</div>
-<div class="row mt-2">
-<div class="col-md-12">
-<h5>Permanent Address</h5>
-<p>480, Estern Avenue, Courtage area, New York</p>
-</div>
-</div>
-<div class="row mt-2">
-<div class="col-md-12">
-<h5>Present Address</h5>
-<p>480, Estern Avenue, Courtage area, New York</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row mt-2">
-<div class="col-md-12">
-<div class="skill-info">
-<h4>Skills</h4>
-<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry, simply dummy text of the printing and typesetting industry</p>
-<ul>
-<li>
-<label>Lorem Ipsum is simply</label>
-<div class="progress">
-<div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
-</div>
-</li>
-<li>
-<label>Lorem Ipsum is simply</label>
-<div class="progress">
-<div class="progress-bar progress-bar-striped progress-bar-animated bg-success" role="progressbar" aria-valuenow="69" aria-valuemin="0" aria-valuemax="100" style="width: 69%"></div>
-</div>
-</li>
-<li>
-<label>Lorem Ipsum is simply</label>
-<div class="progress">
-<div class="progress-bar progress-bar-striped progress-bar-animated bg-info" role="progressbar" aria-valuenow="86" aria-valuemin="0" aria-valuemax="100" style="width: 86%"></div>
-</div>
-</li>
-<li>
- <label>Lorem Ipsum is simply</label>
-<div class="progress">
-<div class="progress-bar progress-bar-striped progress-bar-animated bg-warning" role="progressbar" aria-valuenow="65" aria-valuemin="0" aria-valuemax="100" style="width: 65%"></div>
-</div>
-</li>
-</ul>
-<div class="row mt-3">
-<div class="col-md-12">
-<h5>Education</h5>
-<p class="mt-3">Secondary Schooling at xyz school of secondary education, Mumbai.</p>
-<p>Higher Secondary Schooling at xyz school of higher secondary education, Mumbai.</p>
-<p>Bachelor of Science at Abc College of Art and Science, Chennai.</p>
-<p>Master of Science at Cdm College of Engineering and Technology, Pune.</p>
-</div>
-</div>
-<div class="row mt-3">
-<div class="col-md-12">
-<h5>Certificates</h5>
-<p class="mt-3">1st Prise in Running Competition.</p>
-<p>Lorem Ipsum is simply dummy text.</p>
-<p>Won overall star student in higher secondary education.</p>
-<p>Lorem Ipsum is simply dummy text.</p>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="row mt-2">
-<div class="col-md-12">
-<div class="skill-info">
-<h4>Settings</h4>
-<form>
-<div class="row mt-3">
-<div class="col-12 col-sm-6">
-<div class="form-group">
-<label>Username</label>
-<input type="text" class="form-control">
-</div>
-</div>
-<div class="col-12 col-sm-6">
-<div class="form-group">
-<label>Current Password</label>
-<input type="password" class="form-control">
-</div>
-</div>
-<div class="col-12 col-sm-6">
-<div class="form-group">
-<label>New Password</label>
-<input type="password" class="form-control">
-</div>
-</div>
-<div class="col-12">
-<button type="submit" class="btn btn-primary">Submit</button>
-</div>
-</div>
-</form>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
+    <div class="profile-header">
+        <div class="row align-items-center">
+            <div class="col-sm-12 text-center text-md-left">
+                <h2 class="mb-1 text-white">Profil Étudiant : {{ student.first_name }} {{ student.last_name }}</h2>
+                <p class="mb-0 text-white-50">IDAI • Promotion 2025/2026 • {{ student.student_id }}</p>
+            </div>
+        </div>
+    </div>
 
-<footer>
-<p>Copyright © 2020 Dreamguys.</p>
-</footer>
+    <div class="row mt-5">
+        <div class="col-md-12">
+            <div class="card card-profile p-4">
+                <div class="card-body">
+                    
+                    <div class="row">
+                        <div class="col-lg-6 mb-4">
+                            <h4 class="section-divider">Informations Personnelles</h4>
+                            <div class="pl-3">
+                                <p><span class="info-label">ID Étudiant :</span> {{ student.student_id }}</p>
+                                <p><span class="info-label">Classe :</span> {{ student.student_class }}</p>
+                                <p><span class="info-label">Genre :</span> {{ student.gender }}</p>
+                                <p><span class="info-label">Date de Naissance:</span> {{ student.date_of_birth|date:"d F Y" }}</p>
+                            </div>
+                        </div>
 
+                        <div class="col-lg-6 mb-4">
+                            <h4 class="section-divider" style="border-color: #28a745;">Contact & Parents</h4>
+                            <div class="pl-3">
+                                <p><span class="info-label">Téléphone :</span> {{ student.mobile_number }}</p>
+                                <p><span class="info-label">Nom du Père :</span> {{ student.parent.father_name|default:"-" }}</p>
+                                <p><span class="info-label">Nom de la Mère :</span> {{ student.parent.mother_name|default:"-" }}</p>
+                                <p><span class="info-label">Mobile Parent :</span> {{ student.parent.father_mobile|default:"-" }}</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr class="my-4">
+
+                  <h4 class="section-divider" style="border-color: #ff9b44;">Suivi des Modules (Semestre Actuel)</h4>
+
+<div class="row mt-4">
+    <div class="col-md-6 mb-4">
+        <h6 class="text-muted small font-weight-bold mb-3 text-uppercase">✅ Examens Validés</h6>
+        
+        <div class="p-3 mb-3 rounded border-left border-success bg-white shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Informatique & Algorithmique</span>
+                    <small class="text-muted">Session Normale</small>
+                </div>
+                <div class="text-right">
+                    <span class="h4 mb-0 text-success font-weight-bold">17 / 20</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-3 mb-3 rounded border-left border-primary bg-white shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Mathématiques</span>
+                    <small class="text-muted">Session Normale</small>
+                </div>
+                <div class="text-right">
+                    <span class="h4 mb-0 text-primary font-weight-bold">15 / 20</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="p-3 mb-3 rounded border-left border-success bg-white shadow-sm">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Anglais Technique</span>
+                    <small class="text-muted">Test de niveau</small>
+                </div>
+                <div class="text-right">
+                    <span class="h4 mb-0 text-success font-weight-bold">18 / 20</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 mb-4">
+        <h6 class="text-muted small font-weight-bold mb-3 text-uppercase">⏳ Examens à venir / En attente</h6>
+        
+        <div class="p-3 mb-3 rounded border-left border-warning bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Base de Données (SQL)</span>
+                    <small class="text-warning font-weight-bold"><i class="far fa-clock mr-1"></i> Prévu le 15 Avril</small>
+                </div>
+                <span class="badge badge-warning text-white">À venir</span>
+            </div>
+        </div>
+
+        <div class="p-3 mb-3 rounded border-left border-info bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Réseaux Informatiques</span>
+                    <small class="text-info font-weight-bold"><i class="far fa-clock mr-1"></i> Prévu le 22 Avril</small>
+                </div>
+                <span class="badge badge-info text-white">À venir</span>
+            </div>
+        </div>
+
+        <div class="p-3 mb-3 rounded border-left border-danger bg-light">
+            <div class="d-flex justify-content-between align-items-center">
+                <div>
+                    <span class="module-name d-block">Physique Appliquée</span>
+                    <small class="text-danger font-weight-bold">Date non fixée</small>
+                </div>
+                <span class="badge badge-danger text-white">Non passé</span>
+            </div>
+        </div>
+    </div>
 </div>
-
+            <div class="text-right mt-4">
+                <a href="{% url 'student_list' %}" class="btn btn-outline-primary shadow-sm px-4">
+                    <i class="fas fa-chevron-left mr-2"></i> Retour à la Liste
+                </a>
+            </div>
+        </div>
+    </div>
 </div>
-
-
-<script data-cfasync="false" src="../cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="{%static 'assets/js/jquery-3.6.0.min.js' %}"></script>
-
-<script src="{%static 'assets/js/popper.min.js' %}"></script>
-<script src="{%static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
-
-<script src="{%static 'assets/plugins/slimscroll/jquery.slimscroll.min.js' %}"></script>
-
-<script src="{%static 'assets/js/script.js' %}"></script>
-</body>
-
-<!-- Mirrored from preschool.dreamguystech.com/html-template/student-details.html by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 28 Oct 2021 11:11:50 GMT -->
-</html>
 {% endblock %}

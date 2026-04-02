@@ -6,11 +6,13 @@
         <div class="col-md-8">
             <h2>🏢 Liste des Départements</h2>
         </div>
+        {% if user.is_admin or user.is_superuser %}
         <div class="col-md-4 text-right">
             <a href="{% url 'department-create' %}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Ajouter un Département
             </a>
         </div>
+        {% endif %}
     </div>
 
     {% if departments %}
@@ -38,12 +40,14 @@
                         <a href="{% url 'department-detail' department.pk %}" class="btn btn-sm btn-info">
                             <i class="fas fa-eye"></i>
                         </a>
+                        {% if user.is_admin or user.is_superuser %}
                         <a href="{% url 'department-update' department.pk %}" class="btn btn-sm btn-warning">
                             <i class="fas fa-edit"></i>
                         </a>
                         <a href="{% url 'department-delete' department.pk %}" class="btn btn-sm btn-danger">
                             <i class="fas fa-trash"></i>
                         </a>
+                        {% endif %}
                     </td>
                 </tr>
                 {% endfor %}
@@ -53,7 +57,9 @@
     {% else %}
     <div class="alert alert-info">
         <i class="fas fa-info-circle"></i> Aucun département trouvé. 
+        {% if user.is_admin or user.is_superuser %}
         <a href="{% url 'department-create' %}">Créer le premier</a>
+        {% endif %}
     </div>
     {% endif %}
 </div>

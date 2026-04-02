@@ -1,35 +1,61 @@
 {% extends 'home/base.html' %}
+{% load static %}
 
 {% block content %}
-<div class="page-wrapper"> <div class="content container-fluid">
+<style>
+    /* 1. On aligne tout le bloc vers la gauche */
+    .content.container-fluid {
+        margin-left: 0 !important;   /* Supprime le centrage */
+        margin-right: auto !important;
+        max-width: 1000px !important; /* Limite la largeur pour que ce ne soit pas "toute la page" */
+        padding-left: 15px !important;
+    }
+
+    /* 2. On s'assure que le wrapper est bien calé */
+    .page-wrapper {
+        margin-left: 240px; /* Largeur de ta sidebar */
+    }
+
+    /* Optionnel : Ajuster la taille des cartes pour qu'elles restent compactes */
+    .card {
+        max-width: 300px; 
+    }
+</style>
+
+<div class="page-wrapper"> 
+    <div class="content container-fluid">
         
         <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2>Calendrier des Examens</h2>
-            <a href="{% url 'add_exam' %}" class="btn btn-primary">+ Programmer un examen</a>
+            <h2 class="font-weight-bold">Calendrier des Examens</h2>
+            {% if user.is_admin or user.is_superuser %}
+            <a href="{% url 'add_exam' %}" class="btn btn-primary" style="background-color: #ff9b44; border:none;">+ Programmer</a>
+            {% endif %}
         </div>
 
         {% if messages %}
             {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+                <div class="alert alert-{{ message.tags }} mb-4"> {{ message }} </div>
             {% endfor %}
         {% endif %}
         
         <div class="row">
             {% for exam in exams %}
             <div class="col-md-4 mb-4">
-                <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card border-left-primary shadow h-100 py-2" style="border-left: 5px solid #ff9b44 !important;">
                     <div class="card-body">
-                        <div class="d-flex justify-content-between">
-                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                        <div class="d-flex justify-content-between mb-2">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase" style="color: #ff9b44 !important;">
                                 {{ exam.subject.name }}
                             </div>
-                            <a href="{% url 'delete_exam' exam.pk %}" class="text-danger" onclick="return confirm('Supprimer cet examen ?')">
+                            {% if user.is_admin or user.is_superuser %}
+                            <a href="{% url 'delete_exam' exam.pk %}" class="text-danger" onclick="return confirm('Supprimer ?')">
                                 <i class="fas fa-trash"></i>
                             </a>
+                            {% endif %}
                         </div>
                         
                         <div class="h5 mb-0 font-weight-bold text-gray-800">{{ exam.name }}</div>
-                        <p class="text-muted mt-2">
+                        <p class="text-muted mt-2" style="font-size: 13px;">
                             <strong>Date :</strong> {{ exam.date|date:"d F Y" }} <br>
                             <strong>Type :</strong> {{ exam.get_exam_type_display }}
                         </p>
@@ -37,9 +63,7 @@
                 </div>
             </div>
             {% empty %}
-            <div class="col-12 text-center">
-                <p class="text-muted">Aucun examen programmé pour le moment.</p>
-            </div>
+            <p class="text-muted">Aucun examen programmé.</p>
             {% endfor %}
         </div>
     </div>

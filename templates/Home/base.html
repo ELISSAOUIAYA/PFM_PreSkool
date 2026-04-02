@@ -5,6 +5,7 @@
    
    <head>
       <meta charset="utf-8">
+      <meta name="google" content="notranslate">
       <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0">
       <title>Preskool - Dashboard</title>
       <link rel="shortcut icon" href="{%static 'assets/img/favicon.png' %}">
@@ -81,41 +82,43 @@
             </ul>
          </div>
          <div class="sidebar" id="sidebar">
-            <div class="sidebar-inner slimscroll">
-               <div id="sidebar-menu" class="sidebar-menu">
-                  <ul>
-                     <li class="menu-title"> 
-    <span>Main Menu</span>
-  
-<li class="{% if 'dashboard' in request.path %}active{% endif %}">
-    {% if request.user.is_teacher %}
-        {# Si c'est un prof, on l'envoie vers son dashboard #}
-        <a href="{% url 'teacher_dashboard' %}">
-            <i class="fas fa-th-large"></i> <span>Dashboard</span>
-        </a>
-    {% elif request.user.is_superuser or request.user.is_admin %}
-        {# Si c'est un admin, on l'envoie vers l'admin #}
-        <a href="{% url 'admin_dashboard' %}">
-            <i class="fas fa-th-large"></i> <span>Dashboard</span>
-        </a>
-    {% else %}
-        {# Par défaut (Étudiant) #}
-        <a href="{% url 'student_dashboard' %}">
-            <i class="fas fa-th-large"></i> <span>Dashboard</span>
-        </a>
-    {% endif %}
-</li>
+    <div class="sidebar-inner slimscroll">
+        <div id="sidebar-menu" class="sidebar-menu">
+            <ul>
+                <li class="menu-title"> 
+                    <span>Main Menu</span>
+                </li> 
 
+                <li class="{% if 'dashboard' in request.path %}active{% endif %}">
+                    {% if request.user.is_teacher %}
+                        <a href="{% url 'teacher_dashboard' %}">
+                            <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                        </a>
+                    {% elif request.user.is_superuser or request.user.is_admin %}
+                        <a href="{% url 'admin_dashboard' %}">
+                            <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                        </a>
+                    {% else %}
+                        <a href="{% url 'student_dashboard' %}">
+                            <i class="fas fa-th-large"></i> <span>Dashboard</span>
+                        </a>
+                    {% endif %}
+             
+                
+              
+                    
                      <li class="submenu">
+                         {% if not user.is_student %}
                         <a href="#"><i class="fas fa-user-graduate"></i> <span> Students</span> <span class="menu-arrow"></span></a>
+                           {% endif %}
                         <ul>
                            {% if not user.is_student %}
                            <li><a href="{% url 'student_list' %}">Student List</a></li>
-                           <li><a href="">Student View</a></li>
+                           
                               {% endif %}
                             {% if user.is_admin or user.is_superuser %}
                            <li><a href="{% url 'add_student' %}">Student Add</a></li>
-                           <li><a href="">Student Edit</a></li>
+                           
                               {% endif %}
                         </ul>
                      </li>
@@ -168,16 +171,19 @@
                         <a href="fees.html"><i class="fas fa-comment-dollar"></i> <span>Fees</span></a>
                      </li>
                      
+    <li class="submenu {% if 'exams' in request.path %}active{% endif %}">
     <a href="#"><i class="fas fa-clipboard-list"></i> <span> Examens & Notes</span> <span class="menu-arrow"></span></a>
     <ul>
         <li><a href="{% url 'exam_list' %}">Liste des Examens</a></li>
         
-        {% if request.user.is_staff %}
+        {% if user.is_teacher or user.is_admin or user.is_superuser %}
             <li><a href="{% url 'add_mark' %}">Saisir les Notes</a></li>
         {% endif %}
-
-        <li><a href="{% url 'my_results' %}"> Résultats</a></li>
+       {% if user.is_student or user.is_admin or user.is_superuser %}
+        <li><a href="{% url 'my_results' %}">Résultats</a></li>
+         {% endif %}
     </ul>
+</li>
 </li>
                      </li>
                      <li>
@@ -188,7 +194,9 @@
     <a href="#"><i class="fas fa-table"></i> <span> Time Table</span> <span class="menu-arrow"></span></a>
     <ul>
         <li><a href="{% url 'timetable_list' %}">View List</a></li>
+       {% if user.is_admin or user.is_superuser %}
         <li><a href="{% url 'timetable_add' %}">Add Schedule</a></li>
+         {% endif %}
     </ul>
 </li>
                      <li>

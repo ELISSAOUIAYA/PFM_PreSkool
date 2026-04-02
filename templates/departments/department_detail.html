@@ -7,6 +7,7 @@
             <h2>🏢 {{ department.name }}</h2>
             <hr>
         </div>
+        {% if user.is_admin or user.is_superuser %}
         <div class="col-md-4 text-right">
             <a href="{% url 'department-update' department.pk %}" class="btn btn-warning">
                 <i class="fas fa-edit"></i> Modifier
@@ -15,6 +16,7 @@
                 <i class="fas fa-trash"></i> Supprimer
             </a>
         </div>
+        {% endif %}
     </div>
 
     <!-- Informations générales du département -->
@@ -39,6 +41,7 @@
                 <p>{{ department.description }}</p>
             </div>
             {% endif %}
+            {% if user.is_admin or user.is_superuser %}
             <div class="row">
                 <div class="col-md-6">
                     <h5 class="text-muted">Créé</h5>
@@ -49,6 +52,7 @@
                     <p>{{ department.updated_at|date:"d/m/Y H:i" }}</p>
                 </div>
             </div>
+            {% endif %}
         </div>
     </div>
 
@@ -56,9 +60,11 @@
     <div class="card mt-4 mb-4">
         <div class="card-header bg-info text-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><i class="fas fa-book"></i> Filières ({{ department.subjects.count }})</h5>
+            {% if user.is_admin or user.is_superuser %}
             <a href="{% url 'subject-create' %}?department={{ department.pk }}" class="btn btn-sm btn-light">
                 <i class="fas fa-plus"></i> Ajouter
             </a>
+            {% endif %}
         </div>
         <div class="card-body">
             {% if department.subjects.all %}
@@ -90,9 +96,11 @@
                                 <a href="{% url 'subject-detail' subject.pk %}" class="btn btn-sm btn-info">
                                     <i class="fas fa-eye"></i>
                                 </a>
+                                {% if user.is_admin or user.is_superuser %}
                                 <a href="{% url 'subject-update' subject.pk %}" class="btn btn-sm btn-warning">
                                     <i class="fas fa-edit"></i>
                                 </a>
+                                {% endif %}
                             </td>
                         </tr>
                         {% endfor %}
@@ -109,9 +117,12 @@
     <div class="card mt-4 mb-4">
         <div class="card-header bg-success text-white d-flex justify-content-between align-items-center">
             <h5 class="mb-0"><i class="fas fa-chalkboard-user"></i> Professeurs ({{ department.teachers.count }})</h5>
+
+            {% if user.is_admin or user.is_superuser %}
             <a href="{% url 'add-teacher-to-department' department.pk %}" class="btn btn-sm btn-light">
                 <i class="fas fa-plus"></i> Ajouter
             </a>
+            {% endif %}
         </div>
         <div class="card-body">
             {% if department.teachers.all %}

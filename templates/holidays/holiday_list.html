@@ -6,11 +6,13 @@
         <div class="col-md-8">
             <h2>📅 Calendrier des Jours Fériés</h2>
         </div>
+        {% if user.is_admin or user.is_superuser %}
         <div class="col-md-4 text-right">
             <a href="{% url 'holiday-create' %}" class="btn btn-primary">
                 <i class="fas fa-plus"></i> Ajouter un Jour Férié
             </a>
         </div>
+        {% endif %}
     </div>
 
     {% if holidays %}
@@ -43,12 +45,14 @@
                     <a href="{% url 'holiday-detail' holiday.pk %}" class="btn btn-sm btn-info">
                         <i class="fas fa-eye"></i> Voir
                     </a>
+                    {% if user.is_admin or user.is_superuser %}
                     <a href="{% url 'holiday-update' holiday.pk %}" class="btn btn-sm btn-warning">
                         <i class="fas fa-edit"></i> Modifier
                     </a>
                     <a href="{% url 'holiday-delete' holiday.pk %}" class="btn btn-sm btn-danger">
                         <i class="fas fa-trash"></i> Supprimer
                     </a>
+                    {% endif %}
                 </div>
             </div>
         </div>
@@ -57,8 +61,10 @@
     {% else %}
     <div class="alert alert-info">
         <i class="fas fa-info-circle"></i> Aucun jour férié défini. 
+        {% if user.is_admin or user.is_superuser %}
         <a href="{% url 'holiday-create' %}">Créer le premier</a>
+        {% endif %}
     </div>
     {% endif %}
-</div>
-{% endblock %}
+ </div>
+{%endblock%}

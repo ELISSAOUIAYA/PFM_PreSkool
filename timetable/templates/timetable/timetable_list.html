@@ -1,34 +1,102 @@
 {% extends 'Home/base.html' %}
+
 {% block content %}
-<div class="page-wrapper">
-    <div class="content container-fluid">
-        <div class="page-header">
-            <div class="row align-items-center">
-                <div class="col"><h3 class="page-title">Emploi du Temps</h3></div>
-                <div class="col-auto float-right ml-auto">
-                    <a href="{% url 'timetable_add' %}" class="btn btn-primary"><i class="fas fa-plus"></i></a>
+<style>
+    /* On force l'alignement à GAUCHE pour supprimer le vide */
+    .content {
+        padding: 30px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        width: 100% !important;
+        max-width: 100% !important; /* Supprime la limite de largeur */
+    }
+
+    /* On fait en sorte que la carte occupe tout l'espace horizontal */
+    .card {
+        width: 100% !important;
+        margin-bottom: 30px;
+        border: none;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    .table-thead-color {
+        background-color: #1b5a90 !important;
+        color: white !important;
+    }
+
+    /* On aligne le texte à gauche pour que ça suive la sidebar */
+    th, td {
+        text-align: left !important;
+        padding: 15px !important;
+    }
+
+    .badge-lundi {
+        background-color: #00d2aa;
+        color: white;
+        padding: 6px 12px;
+        border-radius: 4px;
+        font-weight: bold;
+    }
+</style>
+
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row align-items-center">
+            <div class="col">
+                <h3 class="page-title">📅 Emploi du Temps</h3>
+            </div>
+            {% if user.is_admin or user.is_superuser %}
+            <div class="col-auto">
+                <a href="{% url 'timetable_add' %}" class="btn btn-primary">
+                    <i class="fas fa-plus"></i> Nouveau
+                </a>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card card-table">
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover mb-0">
+                            <thead class="table-thead-color">
+                                <tr>
+                                    <th>Matière</th>
+                                    <th>Enseignant</th>
+                                    <th>Jour</th>
+                                    <th>Horaire</th>
+                                    <th>Salle</th>
+                                    {% if user.is_admin or user.is_superuser %}
+                                    <th class="text-right">Action</th>
+                                    {% endif %}
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for t in timetables %}
+                                <tr>
+                                    <td><strong>{{ t.subject }}</strong></td>
+                                    <td>{{ t.teacher }}</td>
+                                    <td><span class="badge-lundi">{{ t.day_of_week }}</span></td>
+                                    <td style="color: #f3a638; font-weight: bold;">
+                                        {{ t.start_time|date:"H:i" }} - {{ t.end_time|date:"H:i" }}
+                                    </td>
+                                    <td><span class="badge badge-dark">{{ t.room }}</span></td>
+                                    {% if user.is_admin or user.is_superuser %}
+                                    <td class="text-right">
+                                        <a href="{% url 'timetable_edit' t.pk %}" class="btn btn-sm btn-outline-success">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+                                    </td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="table-responsive">
-            <table class="table table-hover table-center mb-0">
-                <thead>
-                    <tr>
-                        <th>Matière</th><th>Enseignant</th><th>Jour</th><th>Horaire</th><th>Salle</th><th class="text-right">Action</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for t in timetables %}
-                    <tr>
-                        <td>{{ t.subject }}</td><td>{{ t.teacher }}</td><td>{{ t.day_of_week }}</td>
-                        <td>{{ t.start_time }} - {{ t.end_time }}</td><td>{{ t.room }}</td>
-                        <td class="text-right">
-                            <a href="{% url 'timetable_edit' t.pk %}" class="btn btn-sm bg-success-light mr-2"><i class="fas fa-pen"></i></a>
-                        </td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
         </div>
     </div>
 </div>

@@ -12,7 +12,7 @@ def student_list(request):
     count_students = students.count()
     
     context = {
-        'student_list': students, # Le nom doit correspondre au {% for student in student_list %} du HTML
+        'student_list': students, 
         'count_students': count_students,
     }
     # Assure-toi que le chemin correspond au nom du dossier qu'on a renommé (student sans 's')
@@ -39,7 +39,7 @@ def add_student(request):
         messages.success(request, 'Student added Successfully')
         return redirect('student_list')
     
-    return render(request, 'student/add_student.html')
+    return render(request, 'student/add-student.html')
 
 # 4. Voir un étudiant spécifique
 def view_student(request, student_id):
@@ -49,7 +49,7 @@ def view_student(request, student_id):
 # 5. Modifier un étudiant
 def edit_student(request, student_id):
     student = get_object_or_404(Student, student_id=student_id)
-    return render(request, 'student/edit_student.html', {'student': student})
+    return render(request, 'student/edit-student.html', {'student': student})
 
 # 6. Supprimer un étudiant
 def delete_student(request, student_id):
