@@ -1,0 +1,83 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>📅 {{ holiday.name }}</h2>
+            <hr>
+        </div>
+        <div class="col-md-4 text-right">
+            <a href="{% url 'holiday-update' holiday.pk %}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+            <a href="{% url 'holiday-delete' holiday.pk %}" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Supprimer
+            </a>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-header {% if holiday.is_national_holiday %}bg-danger{% else %}bg-info{% endif %} text-white">
+            <h5 class="mb-0">
+                {% if holiday.is_national_holiday %}
+                    <i class="fas fa-flag"></i> Jour Férié National
+                {% else %}
+                    <i class="fas fa-calendar"></i> Jour Férié Établissement
+                {% endif %}
+            </h5>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Date de Début</h5>
+                    <p class="text-primary" style="font-size: 18px;">
+                        <strong>{{ holiday.start_date|date:"d/m/Y" }}</strong>
+                    </p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Date de Fin</h5>
+                    <p class="text-primary" style="font-size: 18px;">
+                        <strong>{{ holiday.end_date|date:"d/m/Y" }}</strong>
+                    </p>
+                </div>
+            </div>
+
+            <div class="row mb-4">
+                <div class="col-md-12">
+                    <h5 class="text-muted">Durée</h5>
+                    <p>
+                        <strong>
+                            {% widthratio holiday.end_date|add:"86400" holiday.start_date "1" %} jours
+                        </strong>
+                    </p>
+                </div>
+            </div>
+
+            {% if holiday.description %}
+            <div class="mb-4">
+                <h5 class="text-muted">Description</h5>
+                <p>{{ holiday.description }}</p>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Créé</h5>
+                    <p>{{ holiday.created_at|date:"d/m/Y H:i" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Modifié</h5>
+                    <p>{{ holiday.updated_at|date:"d/m/Y H:i" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'holiday-list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour à la Liste
+        </a>
+    </div>
+</div>
+{% endblock %}

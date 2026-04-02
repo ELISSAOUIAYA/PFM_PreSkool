@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+
+{% block content %}
+<div class="page-wrapper"> <div class="content container-fluid">
+        
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2>Calendrier des Examens</h2>
+            <a href="{% url 'add_exam' %}" class="btn btn-primary">+ Programmer un examen</a>
+        </div>
+
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{ message.tags }}"> {{ message }} </div>
+            {% endfor %}
+        {% endif %}
+        
+        <div class="row">
+            {% for exam in exams %}
+            <div class="col-md-4 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
+                                {{ exam.subject.name }}
+                            </div>
+                            <a href="{% url 'delete_exam' exam.pk %}" class="text-danger" onclick="return confirm('Supprimer cet examen ?')">
+                                <i class="fas fa-trash"></i>
+                            </a>
+                        </div>
+                        
+                        <div class="h5 mb-0 font-weight-bold text-gray-800">{{ exam.name }}</div>
+                        <p class="text-muted mt-2">
+                            <strong>Date :</strong> {{ exam.date|date:"d F Y" }} <br>
+                            <strong>Type :</strong> {{ exam.get_exam_type_display }}
+                        </p>
+                    </div>
+                </div>
+            </div>
+            {% empty %}
+            <div class="col-12 text-center">
+                <p class="text-muted">Aucun examen programmé pour le moment.</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% endblock %}

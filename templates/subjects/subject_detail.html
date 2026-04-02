@@ -1,0 +1,76 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-8">
+            <h2>📖 {{ subject.name }}</h2>
+            <hr>
+        </div>
+        <div class="col-md-4 text-right">
+            <a href="{% url 'subject-update' subject.pk %}" class="btn btn-warning">
+                <i class="fas fa-edit"></i> Modifier
+            </a>
+            <a href="{% url 'subject-delete' subject.pk %}" class="btn btn-danger">
+                <i class="fas fa-trash"></i> Supprimer
+            </a>
+        </div>
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Code</h5>
+                    <p class="text-primary"><strong>{{ subject.code }}</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Département</h5>
+                    <p><strong>{{ subject.department.name }}</strong></p>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Crédits</h5>
+                    <p><strong>{{ subject.credit_hours }} heures</strong></p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Type</h5>
+                    <p>
+                        {% if subject.is_optional %}
+                            <span class="badge badge-warning">Optionnelle</span>
+                        {% else %}
+                            <span class="badge badge-success">Obligatoire</span>
+                        {% endif %}
+                    </p>
+                </div>
+            </div>
+
+            {% if subject.description %}
+            <div class="mb-3">
+                <h5 class="text-muted">Description</h5>
+                <p>{{ subject.description }}</p>
+            </div>
+            {% endif %}
+
+            <div class="row">
+                <div class="col-md-6">
+                    <h5 class="text-muted">Créé</h5>
+                    <p>{{ subject.created_at|date:"d/m/Y H:i" }}</p>
+                </div>
+                <div class="col-md-6">
+                    <h5 class="text-muted">Modifié</h5>
+                    <p>{{ subject.updated_at|date:"d/m/Y H:i" }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="mt-4">
+        <a href="{% url 'subject-list' %}" class="btn btn-secondary">
+            <i class="fas fa-arrow-left"></i> Retour à la liste
+        </a>
+    </div>
+</div>
+{% endblock %}

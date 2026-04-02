@@ -1,0 +1,39 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card border-danger">
+                <div class="card-header bg-danger text-white">
+                    <h5 class="mb-0">⚠️ Confirmation de Suppression</h5>
+                </div>
+                <div class="card-body">
+                    <p class="text-muted">Êtes-vous sûr de vouloir supprimer ce jour férié ?</p>
+                    <div class="alert alert-warning">
+                        <strong>{{ holiday.name }}</strong>
+                        <br>
+                        <small>Du {{ holiday.start_date|date:"d/m/Y" }} au {{ holiday.end_date|date:"d/m/Y" }}</small>
+                    </div>
+                    <p class="text-danger">
+                        <i class="fas fa-exclamation-triangle"></i> 
+                        Cette action est <strong>irréversible</strong>.
+                    </p>
+
+                    <form method="POST" class="mt-4">
+                        {% csrf_token %}
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-trash"></i> Oui, Supprimer
+                            </button>
+                            <a href="{% url 'holiday-detail' holiday.pk %}" class="btn btn-secondary">
+                                <i class="fas fa-times"></i> Annuler
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

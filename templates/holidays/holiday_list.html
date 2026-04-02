@@ -1,0 +1,64 @@
+{% extends 'Home/base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row mb-4">
+        <div class="col-md-8">
+            <h2>📅 Calendrier des Jours Fériés</h2>
+        </div>
+        <div class="col-md-4 text-right">
+            <a href="{% url 'holiday-create' %}" class="btn btn-primary">
+                <i class="fas fa-plus"></i> Ajouter un Jour Férié
+            </a>
+        </div>
+    </div>
+
+    {% if holidays %}
+    <div class="row">
+        {% for holiday in holidays %}
+        <div class="col-md-6 mb-3">
+            <div class="card {% if holiday.is_national_holiday %}border-danger{% else %}border-primary{% endif %}">
+                <div class="card-header {% if holiday.is_national_holiday %}bg-danger text-white{% else %}bg-primary text-white{% endif %}">
+                    <h5 class="mb-0">
+                        <i class="fas fa-flag"></i> {{ holiday.name }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    <p class="mb-2">
+                        <i class="fas fa-calendar"></i> 
+                        <strong>Du {{ holiday.start_date|date:"d/m/Y" }} au {{ holiday.end_date|date:"d/m/Y" }}</strong>
+                    </p>
+                    {% if holiday.description %}
+                    <p class="mb-2 text-muted">{{ holiday.description }}</p>
+                    {% endif %}
+                    <p>
+                        {% if holiday.is_national_holiday %}
+                            <span class="badge badge-danger">Jour Férié National</span>
+                        {% else %}
+                            <span class="badge badge-info">Jour Férié Établissement</span>
+                        {% endif %}
+                    </p>
+                </div>
+                <div class="card-footer bg-light">
+                    <a href="{% url 'holiday-detail' holiday.pk %}" class="btn btn-sm btn-info">
+                        <i class="fas fa-eye"></i> Voir
+                    </a>
+                    <a href="{% url 'holiday-update' holiday.pk %}" class="btn btn-sm btn-warning">
+                        <i class="fas fa-edit"></i> Modifier
+                    </a>
+                    <a href="{% url 'holiday-delete' holiday.pk %}" class="btn btn-sm btn-danger">
+                        <i class="fas fa-trash"></i> Supprimer
+                    </a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="alert alert-info">
+        <i class="fas fa-info-circle"></i> Aucun jour férié défini. 
+        <a href="{% url 'holiday-create' %}">Créer le premier</a>
+    </div>
+    {% endif %}
+</div>
+{% endblock %}

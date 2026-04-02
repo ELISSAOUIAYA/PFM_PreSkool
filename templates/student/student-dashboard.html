@@ -1,0 +1,75 @@
+{% extends 'Home/base.html' %}
+{% block content %}
+<div class="content container-fluid">
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Bienvenue, {{ user.username }} !</h3>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-header"><h5 class="card-title">📅 Mon Emploi du Temps</h5></div>
+                <div class="card-body">
+                    <ul class="list-group list-group-flush">
+                        {% for t in timetables %}
+                        <li class="list-group-item">{{ t.subject }} - {{ t.start_time }}</li>
+                        {% empty %}
+                        <li class="list-group-item">Aucun cours prévu.</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card">
+                <div class="card-header"><h5 class="card-title">📝 Examens & Notes</h5></div>
+                <div class="card-body">
+                    <h6>Prochains Examens :</h6>
+                    {% for e in upcoming_exams %}
+                    <small>{{ e.name }} ({{ e.date }})</small><br>
+                    {% endfor %}
+                    <hr>
+                    <h6>Dernières Notes :</h6>
+                    {% for r in latest_results %}
+                    <div class="d-flex justify-content-between">
+                        <span>{{ r.exam.name }}</span>
+                        <span class="badge badge-success">{{ r.score }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4">
+            <div class="card bg-info text-white">
+                <div class="card-header"><h5 class="card-title text-white">🏖️ Prochaines Vacances</h5></div>
+                <div class="card-body">
+                    {% for h in holidays %}
+                    <p>{{ h.name }} : <strong>{{ h.date }}</strong></p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <div class="col-12 mt-4">
+            <div class="card">
+                <div class="card-header"><h5 class="card-title">📚 Mes Matières</h5></div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for s in my_subjects %}
+                        <div class="col-md-3">
+                            <div class="alert alert-secondary">{{ s.name }}</div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

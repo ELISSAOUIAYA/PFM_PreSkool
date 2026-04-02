@@ -1,0 +1,200 @@
+ {% extends 'Home/base.html' %}
+
+{% load static %}
+
+{% block content %}
+ 
+  
+<div class="content container-fluid">
+    {# 1. En-tête du Dashboard #}
+    <div class="page-header">
+        <div class="row">
+            <div class="col-sm-12">
+                <h3 class="page-title">Welcome Admin!</h3>
+                <ul class="breadcrumb">
+                    <li class="breadcrumb-item active">Dashboard</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+   <div class="row">
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-one w-100">
+            <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-icon">
+                        <i class="fas fa-user-graduate"></i>
+                    </div>
+                    <div class="db-info">
+                        <h3>{{ total_students }}</h3> <h6>Étudiants</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-two w-100">
+            <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-icon">
+                        <i class="fas fa-chalkboard-teacher"></i>
+                    </div>
+                    <div class="db-info">
+                        <h3>5</h3> <h6>Professeurs</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+        <div class="card bg-three w-100">
+            <div class="card-body">
+                <div class="db-widgets d-flex justify-content-between align-items-center">
+                    <div class="db-icon">
+                        <i class="fas fa-building"></i>
+                    </div>
+                    <div class="db-info">
+                        <h3>3</h3>
+                        <h6>Départements</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    {# 3. Graphiques (ApexCharts) #}
+    <div class="row">
+        <div class="col-md-12 col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header"><h5 class="card-title">Revenue</h5></div>
+                <div class="card-body"><div id="apexcharts-area"></div></div>
+            </div>
+        </div>
+        <div class="col-md-12 col-lg-6">
+            <div class="card card-chart">
+                <div class="card-header"><h5 class="card-title">Number of Students</h5></div>
+                <div class="card-body"><div id="bar"></div></div>
+            </div>
+        </div>
+    </div>
+
+    {# 4. Tableaux et Activités #}
+    <div class="row">
+        <div class="col-md-6 d-flex">
+            <div class="card flex-fill">
+                <div class="card-header"><h5 class="card-title">Star Students</h5></div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-center">
+                            <thead class="thead-light">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th class="text-center">Marks</th>
+                                    <th class="text-right">Year</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>PRE2209</td>
+                                    <td>John Smith</td>
+                                    <td class="text-center">98%</td>
+                                    <td class="text-right">2025</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {# ... (Reste de ta section Activity Feed) ... #}
+    </div>
+</div>
+
+{# 5. Scripts spécifiques au Dashboard (Uniquement les graphiques) #}
+{# Si ton base.html n'a pas de block scripts, ajoute ces lignes ici #}
+<script src="{% static 'assets/plugins/apexchart/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/plugins/apexchart/chart-data.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        
+        // --- GRAPHIQUE 1 : REVENU (Frais de scolarité) ---
+        var revenueOptions = {
+            chart: {
+                height: 350,
+                type: 'area',
+                toolbar: { show: false },
+            },
+            dataLabels: { enabled: false },
+            stroke: { curve: 'smooth', width: 2 },
+            // Données : Sommes en DH (Janvier à Avril 2026)
+            series: [{
+                name: 'Revenus (DH)',
+                data: [15000, 22000, 18000, 25000] 
+            }],
+            xaxis: {
+                categories: ['Janvier', 'Février', 'Mars', 'Avril'],
+            },
+            colors: ['#3D5EE1'], // Bleu Preskool
+            fill: {
+                type: 'gradient',
+                gradient: { shadeIntensity: 1, opacityFrom: 0.7, opacityTo: 0.9 }
+            }
+        };
+        var revenueChart = new ApexCharts(document.querySelector("#apexcharts-area"), revenueOptions);
+        revenueChart.render();
+
+        // --- GRAPHIQUE 2 : NOMBRE D'ÉTUDIANTS (Par Niveau) ---
+        var studentOptions = {
+            chart: {
+                height: 350,
+                type: 'bar',
+                toolbar: { show: false },
+            },
+            plotOptions: {
+                bar: { horizontal: false, columnWidth: '55%', borderRadius: 5 }
+            },
+            dataLabels: { enabled: false },
+            // Données : Nombre d'élèves par classe
+            series: [{
+                name: 'Étudiants',
+                data: [8, 12, 5, 10] 
+            }],
+            xaxis: {
+                categories: ['IDAI 1', 'IDAI 2', 'Licence 1', 'Licence 2'],
+            },
+            colors: ['#70C4CF'], // Vert/Bleu clair Preskool
+        };
+        var studentChart = new ApexCharts(document.querySelector("#bar"), studentOptions);
+        studentChart.render();
+    });
+</script>
+{% endblock %}
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Graphique Revenue (Revenus des inscriptions)
+        var revenueOptions = {
+            series: [{ name: 'Revenue', data: [50, 40, 300, 220, 500, 250, 400] }],
+            chart: { type: 'area', height: 350, toolbar: {show: false} },
+            colors: ['#3D5EE1'],
+            stroke: { curve: 'smooth' },
+        };
+        var revenueChart = new ApexCharts(document.querySelector("#apexcharts-area"), revenueOptions);
+        revenueChart.render();
+
+        // Graphique Number of Students (Inscriptions par mois)
+        var studentOptions = {
+            series: [{ name: 'Nouveaux Étudiants', data: [4, 3, 10, 9, 20, 15, 20] }],
+            chart: { type: 'bar', height: 350, toolbar: {show: false} },
+            colors: ['#70C4CF'],
+            plotOptions: { bar: { borderRadius: 4, horizontal: false } },
+        };
+        var studentChart = new ApexCharts(document.querySelector("#bar"), studentOptions);
+        studentChart.render();
+    });
+</script>
