@@ -49,11 +49,11 @@ Accédez à l'application via : http://127.0.0.1:8000/
 Identifiants de Test :
 
 Pour explorer toutes les fonctionnalités (y compris l'administration), utilisez les comptes suivants :
-
-Rôle	         -    Nom d'utilisateur   -	Mot de passe
-Administrateur	 -  ayaelissaoui          -  aya123
-Enseignant	 -   chorouk@user.com          -  chorouk123
-Étudiant	 -    student01	          -     password123
+| Rôle | Nom d'utilisateur / Email | Mot de passe |
+| :--- | :--- | :--- |
+| **Administrateur** | `ayaelissaoui` | `aya123` |
+| **Enseignant** | `chorouk@user.com` | `chorouk123` |
+| **Étudiant** | `student01` | `password123` |
 
     Note : Accès à l'interface d'administration Django sur http://127.0.0.1:8000/admin/.
 
