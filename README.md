@@ -60,7 +60,10 @@ Pour explorer toutes les fonctionnalités (y compris l'administration), utilisez
 
 Démonstration Vidéo
 
-Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via le lien ci-dessous : 
+Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via les liens ci-dessous : 
+
+* [Administration & Espace Enseignant](https://1drv.ms/v/c/292b2e52cf235255/IQBPiyr9q4aeQYCfkzXiflx2AYi-q7s7151qxo6Zt7yWVDA?e=3l1Zkj)
+* [Espace Étudiant & Création de Compte](https://1drv.ms/v/c/292b2e52cf235255/IQA8xeQOLHLeS6bqXr6IrfIyAQSIdksowdtWeJL40bCUFVk?e=rJaWLs)
 
 
 
