@@ -58,11 +58,13 @@ Pour explorer toutes les fonctionnalités (y compris l'administration), utilisez
     Note : Accès à l'interface d'administration Django sur http://127.0.0.1:8000/admin/.
 
 
-Démonstration Vidéo
+## 🎬 Démonstration Vidéo
 
-Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via les liens ci-dessous : 
+Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via le lien ci-dessous :
 
-*👉 [Démo:](https://1drv.ms/v/c/292b2e52cf235255/IQBbJrDnM-6ER4NFAfbw-qjJAcijWRBMXG__w2FScuvFPm0?e=9qazp2)
+👉 **[Visionner la Démo Vidéo du Projet PreSkool](https://1drv.ms/v/c/292b2e52cf235255/IQBbJrDnM-6ER4NFAfbw-qjJAcijWRBMXG__w2FScuvFPm0?e=9qazp2)**
+
+> ⚠️ **Note importante sur la qualité :** Le lecteur OneDrive peut afficher une qualité réduite par défaut. Pour une lisibilité optimale du code et des graphiques IDAI, veuillez régler la qualité sur **1080p HD** via l'icône d'engrenage (paramètres) du lecteur.
 
 
 
