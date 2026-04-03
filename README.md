@@ -60,7 +60,7 @@ Pour explorer toutes les fonctionnalités (y compris l'administration), utilisez
 
 ## 🎬 Démonstration Vidéo
 
-Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via le lien ci-dessous :
+Vous pouvez visionner une présentation complète des fonctionnalités (Dashboard, Ajout Étudiant, Gestion Départements) via le lien ci-dessous:
 
 👉 **[Visionner la Démo Vidéo du Projet PreSkool](https://1drv.ms/v/c/292b2e52cf235255/IQBbJrDnM-6ER4NFAfbw-qjJAcijWRBMXG__w2FScuvFPm0?e=9qazp2)**
 
